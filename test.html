@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> Place your Order</title>
+        <link rel="stylesheet" href="CSS/stylesheet.css">
+        <!--<link rel="icon" href="IMAGES/favicon.ico">-->
+        <link href="https://fonts.googleapis.com/css2?family=Baloo+Chettan+2:wght@600&family=Indie+Flower&family=Laila:wght@600&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+        
+
+        
+    <form >
+        
+        
+          <div class="banner">
+            <img src="images/pizza.png" class="logo">
+            <a href="index.html"> <button type="button" class="btn btn-dark btn-lg" style="margin-right: 5%;">Home</button></a>
+            <a href="specials.html"> <button type="button" class="btn btn-dark btn-lg" style="margin-right: 5%;">Choose a Special</button></a>
+           </div>
+        
+
+      
+    
+
+          <h1>Build your own</h1>
+
+
+          
+              <h3>Choose your size</h3>
+              <select required id="sizeprice" class="size" onchange="getSelectedValue2();">
+               <option value="10"> Small ($10)</option>
+               <option value="15"> Medium ($15)</option>
+               <option value="20"> Large ($20)</option>
+               <option value="25"> Extra Large ($25)</option>
+              </select>
+
+                   
+            
+              <h3>Choose your crust</h3>
+              <select required id="crustprice" class="crust" onchange="getSelectedValue();">
+                <option value="0"> Original ($-)</option>
+                <option value="5"> Thin Crust ($5)</option>
+                <option value="7"> Garlic Parmesian ($7)</option>
+                <option value="9"> Deep Dish ($9)</option>
+              </select>
+
+             
+                       
+
+              <h3>Choose your toppings</h3>
+              <br>
+              <h4>Meats</h4>
+              <input type="checkbox" id="meat-topping1" class="topping" value="3" name="Pepperoni">
+              <label for="meat-topping1"> Pepperoni($3)</label>
+              <input type="checkbox" id="meat-topping2" class="topping" value="5" name="BBQ Chicken">
+              <label for="meat-topping2"> BBQ Chicken($5)</label>
+              <input type="checkbox" id="meat-topping3" class="topping" value="3" name="Bacon">
+              <label for="meat-topping3"> Bacon($3)</label><br>
+              <input type="checkbox" id="meat-topping4" class="topping" value="6" name="Italian Sausage">
+              <label for="meat-topping4"> Italian Sausage($6)</label>
+              <input type="checkbox" id="meat-topping5" class="topping" value="2" name="Ham">
+              <label for="meat-topping5"> Ham($2)</label>
+              <input type="checkbox" id="meat-topping6" class="topping" value="4" name="Anchovies">
+              <label for="meat-topping6"> Anchovies($4)</label>
+
+              <h4>Veggies</h4>
+              <input type="checkbox" id="veg-topping1" class="topping" value="2">
+              <label for="veg-topping1"> Onions($2)</label>
+              <input type="checkbox" id="veg-topping2" class="topping" value="2">
+              <label for="veg-topping2"> Green Peppers($2)</label>
+              <input type="checkbox" id="veg-topping3" class="topping" value="4">
+              <label for="veg-topping3"> Pineapples($4)</label>
+              <input type="checkbox" id="veg-topping4" class="topping" value="3">
+              <label for="veg-topping4"> Olives($3)</label><br>
+              <input type="checkbox" id="veg-topping5" class="topping" value="5">
+              <label for="veg-topping5"> Mushrooms($5)</label>
+              <input type="checkbox" id="veg-topping6" class="topping" value="5">
+              <label for="veg-topping6"> Jalepenos($5)</label>
+              <input type="checkbox" id="veg-topping7" class="topping" value="2">
+              <label for="veg-topping7"> Corn($2)</label>
+      
+              <br>
+              <br>
+              <h3>Any special requests for this order?</h3>
+              <input type="text">
+              
+              <br>
+      
+        </form>
+            <br>
+            <br>
+            <br>
+
+      <button class="button" id="button1">Place Order</button>
+      <h3 id="test"></h3>
+      <h3 id="statement"></h3>
+
+      <button class="checkout" id="order">Check Out</button>
+
+      <script>
+
+        var global;
+        var global2;
+
+        function getSelectedValue()
+        {
+          var crustPrice = document.getElementById("crustprice").value;
+          global = crustPrice;
+        }
+
+        function getSelectedValue2()
+        {
+          var sizePrice = document.getElementById("sizeprice").value;
+          global2 = sizePrice
+        }
+
+        var button = document.getElementById("button1");
+        var result = document.getElementById("test");
+        var statement = document.getElementById("statement");
+        
+        button.addEventListener( "click" , function(){
+        
+        var options = document.getElementsByClassName("topping");
+        
+        var calc = 0;
+        var totalPrice = 0;    
+        
+         for (i = 0; i < options.length; i++) {
+          if (options[i].checked) {
+            calc = calc + parseInt( options[i].value) + parseInt(global) + parseInt(global2);
+            
+          }
+        }
+        result.innerHTML = "Your order total is $" + calc;
+        statement.innerHTML = "If you would like to make any further changes, please do so now, if not you may proceed to check out"
+        });
+        </script>
+
+  <!--    
+  <script src="JavaScript.js" charset="utf-8"></script>
+  -->
+    </body>
+
+</html>
